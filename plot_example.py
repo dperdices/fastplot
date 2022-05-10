@@ -4,6 +4,8 @@ import fastplot
 import numpy as np
 import pandas as pd
 
+STYLE="latex"
+
 
 x = range(11)
 y=[4,150,234,465,745,612,554,43,565,987,154]
@@ -24,11 +26,11 @@ fastplot.plot([ ('First', (x, y1) ), ('Second', (x, y2) )], 'examples/2_line_mul
 
 
 fastplot.plot(np.random.normal(100, 30, 1000), 'examples/3_CDF.png', mode='CDF',
-              xlabel = 'Data', style='latex')
+              xlabel = 'Data', style=STYLE)
 
 
 fastplot.plot(np.random.normal(100, 30, 1000), 'examples/3b_CCDF.png', mode='CDF', 
-              CDF_complementary=True, xlabel = 'Data', style='latex')
+              CDF_complementary=True, xlabel = 'Data', style=STYLE)
 
 
 data = [ ('A', np.random.normal(100, 30, 1000)), ('B', np.random.normal(140, 50, 1000)) ]
@@ -59,7 +61,7 @@ fastplot.plot( data,  'examples/5b_boxplot_multi.png', mode='boxplot_multi', yla
 rng = pd.date_range('1/1/2011', periods=480, freq='H')
 ts = pd.Series(np.random.randn(len(rng)), index=rng)
 fastplot.plot(ts ,  'examples/6_timeseries.png', mode='timeseries', ylabel = 'Value',
-              style='latex', xticks_rotate=30, xticks_fontsize='small',
+              style=STYLE, xticks_rotate=30, xticks_fontsize='small',
               xlim=(pd.Timestamp('1/1/2011'), pd.Timestamp('1/7/2011')))
 
 
@@ -99,7 +101,7 @@ fastplot.plot(data,  'examples/9_bars.png', mode = 'bars', ylabel = 'Value',
 data = pd.DataFrame( [[2,5,9], [3,5,7], [1,6,9], [3,6,8], [2,6,8]],
                      index = ['One', 'Two', 'Three', 'Four', 'Five'],
                      columns = ['A', 'B', 'C'] )
-fastplot.plot(data,  'examples/10_bars_multi.png', mode = 'bars_multi', style='latex',
+fastplot.plot(data,  'examples/10_bars_multi.png', mode = 'bars_multi', style=STYLE,
               ylabel = 'Value', legend = True, ylim = (0,12), legend_ncol=3,
               legend_args={'markerfirst' : False})
 
@@ -118,7 +120,7 @@ y=[120,150,234,465,745,612,554,234,565,888,154]
 def my_callback(plt):
     plt.bar(x,y)
 fastplot.plot(None,  'examples/11_callback.png', mode = 'callback', callback = my_callback,
-              style='latex', xlim=(-0.5, 11.5), ylim=(0, 1000))
+              style=STYLE, xlim=(-0.5, 11.5), ylim=(0, 1000))
 
 
 
@@ -133,7 +135,7 @@ data = pd.DataFrame([(4,3),(5,4),(4,5),(8,6),(10,8),(3,1),(13,10),(9,7),(11,11)]
 def my_callback(plt):
      sns.regplot(x="x", y="y", data=data, ax=plt.gca())
 fastplot.plot(None,  'examples/14_seaborn.png', mode = 'callback', callback = my_callback,
-              style='latex', grid=True)
+              style=STYLE, grid=True)
 
 
 
